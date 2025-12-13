@@ -34,17 +34,21 @@ Pada proyek ini, mahasiswa diharapkan dapat:
 
 ### 2.1 Latar Belakang
 
-Menentukan kategori usia seseorang, khususnya antara kelompok senior dan non-senior, berdasarkan indikator kesehatan merupakan hal yang penting dalam mendukung analisis kesehatan masyarakat, studi epidemiologi, serta perencanaan dan evaluasi kebijakan kesehatan. Seiring bertambahnya usia, individu umumnya mengalami perubahan fisiologis, pergeseran gaya hidup, serta variasi pada biomarker kesehatan tertentu, yang dapat memengaruhi kondisi kesehatan secara keseluruhan. Oleh karena itu, pendekatan pemodelan berbasis data menjadi relevan untuk mengidentifikasi pola-pola kesehatan tersebut dan membantu memetakan risiko kesehatan secara lebih dini dan objektif.
+Menentukan kategori usia seseorang, terutama antara senior dan non-senior, berdasarkan indikator kesehatan penting untuk analisis kesehatan masyarakat, studi epidemiologi, serta perencanaan kebijakan kesehatan. Seiring bertambahnya usia, individu mengalami perubahan fisiologis, gaya hidup, dan variasi biomarker yang memengaruhi kondisi kesehatan, sehingga pemodelan berbasis data relevan untuk mengidentifikasi pola kesehatan dan memetakan risiko secara lebih objektif.
 
-Dataset National Health and Nutrition Examination Survey (NHANES) yang dikembangkan oleh Centers for Disease Control and Prevention (CDC) dan National Center for Health Statistics (NCHS) menyediakan data kesehatan populasi yang sangat komprehensif dan representatif. Dataset ini mencakup berbagai informasi terkait kondisi fisiologis, perilaku kesehatan, serta biomarker klinis yang banyak dimanfaatkan dalam penelitian kesehatan berskala nasional maupun global. Sub-dataset yang digunakan dalam proyek ini difokuskan pada fitur-fitur fisiologis, gaya hidup, dan biomarker kesehatan yang relevan untuk memprediksi kategori usia. Tantangan utama dalam penelitian ini terletak pada kemampuan model dalam mengenali dan membedakan pola kesehatan yang khas antara kelompok senior dan non-senior secara akurat.
+Dataset NHANES ( National Health and Nutrition Examination Survey ) dari CDC ( Centers for Disease Control and Prevention ) dan NCHS ( National Center for Health Statistics ) menyediakan data kesehatan populasi yang komprehensif, mencakup kondisi fisiologis, perilaku, dan biomarker klinis. Sub-dataset yang digunakan fokus pada fitur-fitur penting untuk prediksi kategori usia, dengan tantangan utama model mengenali pola kesehatan khas antara senior dan non-senior.
 
 Melalui proyek ini, diharapkan dapat diperoleh pemahaman yang lebih baik mengenai hubungan antara indikator kesehatan dan kategori usia. Hasil pemodelan yang dihasilkan dapat dimanfaatkan untuk mendukung analisis kesehatan preventif, membantu deteksi risiko kesehatan sejak dini, serta menjadi dasar pengambilan keputusan berbasis data dalam perencanaan dan pengembangan kebijakan di sektor kesehatan.
 
 **Contoh referensi (berformat APA/IEEE):**
-> Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.
+> Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.  
+
 > Centers for Disease Control and Prevention. (2023). National Health and Nutrition Examination Survey (NHANES). https://www.cdc.gov/nchs/nhanes/  
+
 > World Health Organization. (2022). *Ethics and governance of artificial intelligence for health*. https://www.who.int/publications/i/item/9789240029200  
-> Topol, E. J. (2022). *High-performance medicine: The convergence of human and artificial intelligence*. Nature Medicine, 28, 44–56. https://doi.org/10.1038/s41591-021-01645-6 
+
+> Topol, E. J. (2022). *High-performance medicine: The convergence of human and artificial intelligence*. Nature Medicine, 28, 44–56. https://doi.org/10.1038/s41591-021-01645-6  
+
 > Putra, A. R., & Wibowo, A. (2021). Penerapan machine learning untuk analisis data kesehatan di Indonesia. *Jurnal Sistem Informasi Indonesia, 6*(2), 120–130. 
 
 **[Jelaskan konteks dan latar belakang proyek]**
@@ -68,27 +72,29 @@ Melalui proyek ini, diharapkan dapat diperoleh pemahaman yang lebih baik mengena
 
 #### **Model 1 – Baseline Model - Logistic Regression**
 Logistic Regression merupakan algoritma klasifikasi paling sederhana, interpretatif, dan cepat untuk dilatih pada data tabular. Model ini digunakan sebagai acuan awal (benchmark) untuk menilai apakah model yang lebih kompleks benar-benar memberikan peningkatan performa. Logistic Regression juga membantu melihat kontribusi tiap fitur melalui koefisien model.
-Alasan Pemilihan :
-•	Model sederhana, interpretatif, dan cepat dilatih untuk klasifikasi biner.
-•	Memiliki interpretabilitas tinggi terhadap pengaruh tiap fitur (koefisien) dan Cocok untuk binary classification (Adult vs Senior).
-•	Menjadi baseline pembanding untuk advanced model dan deep learning. 
+
+**Alasan Pemilihan:**
+- Model sederhana, interpretatif, dan cepat dilatih untuk klasifikasi biner.
+- Memiliki interpretabilitas tinggi terhadap pengaruh tiap fitur (koefisien) dan cocok untuk binary classification (Adult vs Senior).
+- Menjadi baseline pembanding untuk advanced model dan deep learning.
 
 #### **Model 2 – Advanced / ML Model - Random Forest**
 Random Forest merupakan ensemble learning berbasis banyak decision tree yang mampu menangani hubungan non-linear serta lebih robust terhadap outliers dan fitur yang bervariasi. Model ini juga dapat memberikan feature importance sehingga membantu interpretasi pola yang dipelajari.
-Alasan pemilihan :
-•	Mampu menangani non-linearitas pada data tabular seperti dataset NHANES.
-•	Lebih robust terhadap data yang mengandung noise dan outlier.
-•	Mendukung evaluasi feature importance, sehingga membantu memahami fitur dominan dalam membedakan kelompok usia.
-•	Cocok untuk mengatasi class imbalance lebih baik dibanding model linear.
+
+**Alasan Pemilihan:**
+- Mampu menangani non-linearitas pada data tabular seperti dataset NHANES.
+- Lebih robust terhadap data yang mengandung noise dan outlier.
+- Mendukung evaluasi feature importance, sehingga membantu memahami fitur dominan dalam membedakan kelompok usia.
+- Cocok untuk mengatasi class imbalance lebih baik dibanding model linear.
 
 #### **Model 3 – Deep Learning Model - Multilayer Perceptron / Neural Network – MLP**
 Multilayer Perceptron (MLP) adalah jenis jaringan saraf feedforward yang terdiri dari beberapa lapisan neuron: input layer, hidden layer, dan output layer. Setiap neuron pada suatu lapisan terhubung dengan neuron pada lapisan berikutnya melalui bobot (weight) yang dipelajari selama proses training. Untuk dataset tabular seperti NHANES, digunakan MLP dengan minimal dua hidden layer. Model ini diharapkan mampu mempelajari representasi fitur yang lebih kompleks dibandingkan Logistic Regression maupun Random Forest.
 
-Alasan pemilihan :
-•	Mampu mempelajari representasi fitur yang kompleks pada data tabular.
-•	Memungkinkan penggunaan teknik regulasi (Dropout, Batch Normalization, L2 Regularization) untuk mencegah overfitting.
-•	Dataset berupa tabular, sehingga model MLP dengan minimum 2 hidden layers wajib digunakan.
-•	Dilatih lebih dari 10 epochs, memiliki grafik learning curve, dan dievaluasi pada test set.
+**Alasan Pemilihan:**
+- Mampu mempelajari representasi fitur yang kompleks pada data tabular.
+- Memungkinkan penggunaan teknik regulasi (Dropout, Batch Normalization, L2 Regularization) untuk mencegah overfitting.
+- Dataset berupa tabular, sehingga model MLP dengan minimum 2 hidden layers wajib digunakan.
+- Dilatih lebih dari 10 epochs, memiliki grafik learning curve, dan dievaluasi pada test set.
 
 **Minimum Requirements untuk Deep Learning:**
 - ✅ Model harus training minimal 10 epochs
@@ -108,11 +114,11 @@ UCI Machine Learning Repository :
 https://archive.ics.uci.edu/dataset/887/national+health+and+nutrition+health+survey+2013-2014+(nhanes)+age+prediction+subset
 
 **Deskripsi Dataset:**
-•	Jumlah baris (rows): [ 2278 ]
-•	Jumlah kolom (columns/features): [ 7 ( fitur ), 1 ( target ), 2 ( lainnya )]
-•	Tipe data: [ Data Tabular ]
-•	Ukuran dataset: [ 120 kb ]
-•	Format file: [ CSV ]
+- Jumlah baris (rows): [ 2278 ]
+- Jumlah kolom (columns/features): [ 7 ( fitur ), 1 ( target ), 2 ( lainnya )]
+- Tipe data: [ Data Tabular ]
+- Ukuran dataset: [ 120 kb ]
+- Format file: [ CSV ]
 
 ### 4.2 Deskripsi Fitur
 | Nama Fitur | Tipe Data | Deskripsi | Contoh Nilai |
@@ -166,105 +172,95 @@ Scatter plot memperlihatkan bahwa tidak terdapat hubungan linear yang kuat antar
 **Insight:**  
 Heatmap korelasi menunjukkan bahwa sebagian besar fitur memiliki hubungan yang lemah satu sama lain, menandakan rendahnya ketergantungan linear antar variabel. Korelasi paling kuat terlihat antara kadar glukosa darah (LBXGLU) dan tes toleransi glukosa (LBXGLT), serta antara BMI (BMXBMI) dan insulin (LBXIN), yang mengindikasikan adanya keterkaitan kuat antar variabel metabolik. Sementara itu, variabel demografis seperti gender (RIAGENDR) dan aktivitas fisik (PAQ605) menunjukkan korelasi yang sangat rendah terhadap variabel kesehatan metabolik.
 
-
 ---
 
 ## 5. DATA PREPARATION
 
-Bagian ini menjelaskan **semua** proses transformasi dan preprocessing data yang dilakukan.
 ### 5.1 Data Cleaning
 **Aktivitas:**
-- Handling missing values
-- Removing duplicates
-- Handling outliers
-- Data type conversion
-**Contoh:**
-```
-Missing Values:
-- Fitur 'age' memiliki 50 missing values (5% dari data)
-- Strategi: Imputasi dengan median karena distribusi skewed
-- Alasan: Median lebih robust terhadap outliers dibanding mean
-```
 
-**[Jelaskan langkah-langkah data cleaning yang Anda lakukan]**
+- **Missing Values:** Tidak ada missing values, sehingga tidak perlu imputasi atau penghapusan.  
 
+- **Duplicate Data:** Tidak ada duplikasi, semua baris unik.  
 
+- **Outliers:** Outlier alami dibiarkan karena merepresentasikan kondisi kesehatan sebenarnya.  
+
+- **Data Type:** Semua fitur sudah memiliki tipe data yang sesuai.
+
+- **Imbalanced Data**  
+   - Rasio kelas target age_group ≈ 0,19 (cukup imbalance)  
+   - Jumlah sampel : Adult = 1914, Senior = 364  
+   - Dampak : Model cenderung memprediksi kelas mayoritas (Adult), performa pada kelas Senior rendah  
+   - Strategi : Penanganan dilakukan saat modeling menggunakan SMOTE oversampling dan class weights
 
 ### 5.2 Feature Engineering
 **Aktivitas:**
-- Creating new features
-- Feature extraction
-- Feature selection
-- Dimensionality reduction
-
-**[Jelaskan feature engineering yang Anda lakukan]**
+Feature Engineering:  
+- **Creating new features:** Tidak dilakukan, semua fitur sudah representatif (Adult vs Senior)  
+- **Feature extraction:** Tidak dilakukan, dataset sudah terdiri dari fitur numerik dan kategorikal relevan  
+- **Feature selection:**  
+  - Fitur numerik (BMXBMI, LBXGLU, LBXGLT, LBXIN) discaling untuk stabilitas model  
+  - Fitur kategorikal (RIAGENDR, PAQ605, DIQ010) digunakan langsung tanpa perubahan  
+- **Dimensionality reduction:** Tidak diterapkan, jumlah fitur masih kecil
 
 ### 5.3 Data Transformation
 
-**Untuk Data Tabular:**
-- Encoding (Label Encoding, One-Hot Encoding, Ordinal Encoding)
-- Scaling (Standardization, Normalization, MinMaxScaler)
-
-**Untuk Data Text:**
-- Tokenization
-- Lowercasing
-- Removing punctuation/stopwords
-- Stemming/Lemmatization
-- Padding sequences
-- Word embedding (Word2Vec, GloVe, fastText)
-
-**Untuk Data Image:**
-- Resizing
-- Normalization (pixel values 0-1 atau -1 to 1)
-- Data augmentation (rotation, flip, zoom, brightness, etc.)
-- Color space conversion
-
-**Untuk Time Series:**
-- Creating time windows
-- Lag features
-- Rolling statistics
-- Differencing
-
-**[Jelaskan transformasi yang Anda lakukan]**
+**Data Tabular:**
+- **Encoding:** Target `age_group` dikonversi menjadi numerik (One-Hot Encoding):
+  - Adult → 1
+  - Senior → 0  
+  Fitur kategorikal numerik lain (RIAGENDR, PAQ605, DIQ010) digunakan langsung tanpa perubahan.
+- **Scaling:** Fitur numerik kontinu (BMXBMI, LBXGLU, LBXGLT, LBXIN) distandarisasi menggunakan StandardScaler agar setiap fitur memiliki rata-rata 0 dan standar deviasi 1.
 
 ### 5.4 Data Splitting
 
-**Strategi pembagian data:**
-```
-- Training set: [X]% ([jumlah] samples)
-- Validation set: [X]% ([jumlah] samples) - jika ada
-- Test set: [X]% ([jumlah] samples)
-```
-**Contoh:**
-```
-Menggunakan stratified split untuk mempertahankan distribusi kelas:
-- Training: 80% (8000 samples)
-- Test: 20% (2000 samples)
-- Random state: 42 untuk reproducibility
-```
+**Strategi pembagian data:**  
+- Training set: 64% (1457 samples)  
+- Validation set: 16% (365 samples)  
+- Test set: 20% (456 samples)  
 
-**[Jelaskan strategi splitting Anda dan alasannya]**
-
-
+**Strategi Splitting:**  
+- Menggunakan stratified split untuk menjaga proporsi kelas target (Adult:Senior ≈ 1914:364) tetap konsisten di semua subset.  
+- Random state = 42 untuk memastikan reproducibility.
 
 ### 5.5 Data Balancing (jika diperlukan)
-**Teknik yang digunakan:**
-- SMOTE (Synthetic Minority Over-sampling Technique)
-- Random Undersampling
-- Class weights
-- Ensemble sampling
 
-**[Jelaskan jika Anda melakukan data balancing]**
+**Teknik yang digunakan:**  
+- SMOTE (Synthetic Minority Oversampling Technique)  
+- Class weights  
+
+**Strategi:**  
+- Oversampling/undersampling tidak dilakukan langsung pada dataset awal karena Random Forest dan MLP menangani imbalance dengan class weights.  
+- SMOTE diterapkan pada Random Forest untuk menambah sampel minoritas tanpa duplikasi.  
+- MLP menggunakan class weights selama training agar kelas minoritas diperhitungkan.  
+- Evaluasi menggunakan metrik F1-score, precision, dan recall untuk performa yang adil pada kedua kelas.
 
 ### 5.6 Ringkasan Data Preparation
 
-**Per langkah, jelaskan:**
-1. **Apa** yang dilakukan
-**[Jelaskan ]**
-2. **Mengapa** penting
-**[Jelaskan Mengapa ?]**
-3. **Bagaimana** implementasinya
-**[Jelaskan Bagaimana]**
+1. **Feature Engineering**  
+- **Apa:** Tidak dibuat fitur baru; semua fitur (RIAGENDR, PAQ605, BMXBMI, LBXGLU, DIQ010, LBXGLT, LBXIN) digunakan langsung.  
+- **Mengapa:** Memastikan model memiliki semua informasi relevan tanpa kehilangan pola penting.  
+- **Bagaimana:** Fitur numerik dan kategorikal digunakan langsung; nilai numerik yang mewakili kategori tidak diubah.
+
+2. **Feature Selection**  
+- **Apa:** Fitur numerik kontinu (BMXBMI, LBXGLU, LBXGLT, LBXIN) diskalakan, fitur kategorikal tetap digunakan langsung.  
+- **Mengapa:** Scaling mencegah bias pada fitur dengan rentang besar, tetap menjaga informasi kategori.  
+- **Bagaimana:** StandardScaler diterapkan pada fitur numerik, fitur kategorikal tetap asli.
+
+3. **Data Transformation**  
+- **Apa:** Target `age_group` diencode biner (Adult=1, Senior=0), fitur numerik diskalakan.  
+- **Mengapa:** Agar target bisa diproses model dan fitur numerik konsisten untuk training stabil.  
+- **Bagaimana:** LabelEncoder untuk target, StandardScaler untuk fitur numerik.
+
+4. **Data Splitting**  
+- **Apa:** Dataset dibagi Training 64% (1457), Validation 16% (365), Test 20% (456) menggunakan stratified split.  
+- **Mengapa:** Menjaga distribusi kelas konsisten agar evaluasi performa valid.  
+- **Bagaimana:** `train_test_split` dengan `stratify=y` dan `random_state=42`.
+
+5. **Data Balancing**  
+- **Apa:** Tidak ada oversampling langsung, class weights diterapkan pada MLP; SMOTE digunakan untuk Random Forest.  
+- **Mengapa:** Menangani ketidakseimbangan kelas minoritas tanpa mengubah jumlah sampel asli.  
+- **Bagaimana:** SMOTE diterapkan pada data latih, class weights dihitung dengan `compute_class_weight`, evaluasi pakai Precision, Recall, F1-score.
 
 ---
 
