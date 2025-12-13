@@ -1,15 +1,15 @@
 ## INFORMASI PROYEK
 
 **Judul Proyek:**  
-[(Contoh: "Klasifikasi Penyakit Daun Menggunakan CNN", "Prediksi Harga Rumah dengan Machine Learning", "Analisis Sentimen Ulasan Produk")]
+National Health and Nutrition Health Survey 2013-2014 (NHANES) Age Prediction Subset (Prediksi Kategori Usia (Senior vs Non-Senior) Menggunakan Machine Learning dan Deep Learning pada Dataset NHANES)
 
-**Nama Mahasiswa:** [Nama Lengkap]  
-**NIM:** [Nomor Induk Mahasiswa]  
-**Program Studi:** [Teknologi Informasi / Rekayasa Perangkat Lunak]  
-**Mata Kuliah:** [Nama Mata Kuliah]  
-**Dosen Pengampu:** [Nama Dosen]  
-**Tahun Akademik:** [Tahun/Semester]
-**Link GitHub Repository:** [URL Repository]
+**Nama Mahasiswa:** CANTIKKA MAY ARISTIANTI  
+**NIM:** 234311010  
+**Program Studi:** Teknologi Rekayasa Perangkat Lunak  
+**Mata Kuliah:** DATA SCIENCE
+**Dosen Pengampu:** GUS NANANG SYAIFUDDIIN  
+**Tahun Akademik:** 2025 / 5
+**Link GitHub Repository:** https://github.com/cantikkamay/234311010_CantikkaMay_UASDS
 **Link Video Pembahasan:** [URL Repository]
 
 ---
@@ -33,93 +33,62 @@ Pada proyek ini, mahasiswa diharapkan dapat:
 ## 2. PROJECT OVERVIEW
 
 ### 2.1 Latar Belakang
-**Isi bagian ini dengan:**
-- Mengapa proyek ini penting?
-- Permasalahan umum pada domain terkait (misal: kesehatan, pendidikan, keuangan, pertanian, NLP, computer vision, dll.)
-- Manfaat proyek untuk pengguna, bisnis, atau penelitian
-- Studi literatur atau referensi ilmiah (minimal 1–2 sumber wajib)
+
+Menentukan kategori usia seseorang, khususnya antara kelompok senior dan non-senior, berdasarkan indikator kesehatan merupakan hal yang penting dalam mendukung analisis kesehatan masyarakat, studi epidemiologi, serta perencanaan dan evaluasi kebijakan kesehatan. Seiring bertambahnya usia, individu umumnya mengalami perubahan fisiologis, pergeseran gaya hidup, serta variasi pada biomarker kesehatan tertentu, yang dapat memengaruhi kondisi kesehatan secara keseluruhan. Oleh karena itu, pendekatan pemodelan berbasis data menjadi relevan untuk mengidentifikasi pola-pola kesehatan tersebut dan membantu memetakan risiko kesehatan secara lebih dini dan objektif.
+
+Dataset National Health and Nutrition Examination Survey (NHANES) yang dikembangkan oleh Centers for Disease Control and Prevention (CDC) dan National Center for Health Statistics (NCHS) menyediakan data kesehatan populasi yang sangat komprehensif dan representatif. Dataset ini mencakup berbagai informasi terkait kondisi fisiologis, perilaku kesehatan, serta biomarker klinis yang banyak dimanfaatkan dalam penelitian kesehatan berskala nasional maupun global. Sub-dataset yang digunakan dalam proyek ini difokuskan pada fitur-fitur fisiologis, gaya hidup, dan biomarker kesehatan yang relevan untuk memprediksi kategori usia. Tantangan utama dalam penelitian ini terletak pada kemampuan model dalam mengenali dan membedakan pola kesehatan yang khas antara kelompok senior dan non-senior secara akurat.
+
+Melalui proyek ini, diharapkan dapat diperoleh pemahaman yang lebih baik mengenai hubungan antara indikator kesehatan dan kategori usia. Hasil pemodelan yang dihasilkan dapat dimanfaatkan untuk mendukung analisis kesehatan preventif, membantu deteksi risiko kesehatan sejak dini, serta menjadi dasar pengambilan keputusan berbasis data dalam perencanaan dan pengembangan kebijakan di sektor kesehatan.
 
 **Contoh referensi (berformat APA/IEEE):**
 > Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.
+> Centers for Disease Control and Prevention. (2023). National Health and Nutrition Examination Survey (NHANES). https://www.cdc.gov/nchs/nhanes/  
+> World Health Organization. (2022). *Ethics and governance of artificial intelligence for health*. https://www.who.int/publications/i/item/9789240029200  
+> Topol, E. J. (2022). *High-performance medicine: The convergence of human and artificial intelligence*. Nature Medicine, 28, 44–56. https://doi.org/10.1038/s41591-021-01645-6 
+> Putra, A. R., & Wibowo, A. (2021). Penerapan machine learning untuk analisis data kesehatan di Indonesia. *Jurnal Sistem Informasi Indonesia, 6*(2), 120–130. 
 
 **[Jelaskan konteks dan latar belakang proyek]**
 
 ## 3. BUSINESS UNDERSTANDING / PROBLEM UNDERSTANDING
 ### 3.1 Problem Statements
-Tuliskan 2–4 pernyataan masalah yang jelas dan spesifik.
 
-**Contoh (universal):**
-1. Model perlu mampu memprediksi nilai target dengan akurasi tinggi
-2. Sistem harus dapat mengidentifikasi pola pada citra secara otomatis
-3. Dataset memiliki noise sehingga perlu preprocessing yang tepat
-4. Dibutuhkan model deep learning yang mampu belajar representasi fitur kompleks
-
-**[Tulis problem statements Anda di sini]**
+1. Belum tersedia sistem otomatis untuk mengklasifikasikan individu dalam dataset NHANES ke dalam kelompok usia Senior berdasarkan data kesehatan dan demografis
+2. Model prediksi harus memiliki akurasi dan kemampuan generalisasi yang baik agar tidak terjadi kesalahan klasifikasi yang dapat memengaruhi analisis kesehatan populasi.
+3. Distribusi kelas yang tidak seimbang (Adult > Senior) menyebabkan model cenderung bias terhadap kelas mayoritas.
+4. Diperlukan pendekatan pemodelan yang mampu menangani data tabular serta mempelajari pola kesehatan yang kompleks pada tiap kelompok usia.
 
 ### 3.2 Goals
 
-Tujuan harus spesifik, terukur, dan selaras dengan problem statement.
-**Contoh tujuan:**
-1. Membangun model ML untuk memprediksi variabel target dengan akurasi > 80%
-2. Mengukur performa tiga pendekatan model (baseline, advanced, deep learning)
-3. Menentukan model terbaik berdasarkan metrik evaluasi yang relevan
-4. Menghasilkan sistem yang dapat bekerja secara reproducible
-
-**[Tulis goals Anda di sini]**
+1. Mengembangkan sistem machine learning untuk mengklasifikasikan status usia (Adult vs Senior) menggunakan data NHANES.
+2. Membangun dan membandingkan tiga jenis model: baseline, advanced, dan deep learning.
+3. Mencapai performa evaluasi dengan target minimal F1-score > 0.40 pada kelas minoritas (Senior).
+4. Menghasilkan pipeline pemodelan yang reproducible dan dapat digunakan untuk melakukan inferensi pada data baru. 
 
 ### 3.3 Solution Approach
 
-Mahasiswa **WAJIB** menggunakan minimal **tiga model** dengan komposisi sebagai berikut:
-#### **Model 1 – Baseline Model**
-Model sederhana sebagai pembanding dasar.
-**Pilihan model:**
-- Linear Regression (untuk regresi)
-- Logistic Regression (untuk klasifikasi)
-- K-Nearest Neighbors (KNN)
-- Decision Tree
-- Naive Bayes
+#### **Model 1 – Baseline Model - Logistic Regression**
+Logistic Regression merupakan algoritma klasifikasi paling sederhana, interpretatif, dan cepat untuk dilatih pada data tabular. Model ini digunakan sebagai acuan awal (benchmark) untuk menilai apakah model yang lebih kompleks benar-benar memberikan peningkatan performa. Logistic Regression juga membantu melihat kontribusi tiap fitur melalui koefisien model.
+Alasan Pemilihan :
+•	Model sederhana, interpretatif, dan cepat dilatih untuk klasifikasi biner.
+•	Memiliki interpretabilitas tinggi terhadap pengaruh tiap fitur (koefisien) dan Cocok untuk binary classification (Adult vs Senior).
+•	Menjadi baseline pembanding untuk advanced model dan deep learning. 
 
-**[Jelaskan model baseline yang Anda pilih dan alasannya]**
+#### **Model 2 – Advanced / ML Model - Random Forest**
+Random Forest merupakan ensemble learning berbasis banyak decision tree yang mampu menangani hubungan non-linear serta lebih robust terhadap outliers dan fitur yang bervariasi. Model ini juga dapat memberikan feature importance sehingga membantu interpretasi pola yang dipelajari.
+Alasan pemilihan :
+•	Mampu menangani non-linearitas pada data tabular seperti dataset NHANES.
+•	Lebih robust terhadap data yang mengandung noise dan outlier.
+•	Mendukung evaluasi feature importance, sehingga membantu memahami fitur dominan dalam membedakan kelompok usia.
+•	Cocok untuk mengatasi class imbalance lebih baik dibanding model linear.
 
-#### **Model 2 – Advanced / ML Model**
-Model machine learning yang lebih kompleks.
-**Pilihan model:**
-- Random Forest
-- Gradient Boosting (XGBoost, LightGBM, CatBoost)
-- Support Vector Machine (SVM)
-- Ensemble methods
-- Clustering (K-Means, DBSCAN) - untuk unsupervised
-- PCA / dimensionality reduction (untuk preprocessing)
+#### **Model 3 – Deep Learning Model - Multilayer Perceptron / Neural Network – MLP**
+Multilayer Perceptron (MLP) adalah jenis jaringan saraf feedforward yang terdiri dari beberapa lapisan neuron: input layer, hidden layer, dan output layer. Setiap neuron pada suatu lapisan terhubung dengan neuron pada lapisan berikutnya melalui bobot (weight) yang dipelajari selama proses training. Untuk dataset tabular seperti NHANES, digunakan MLP dengan minimal dua hidden layer. Model ini diharapkan mampu mempelajari representasi fitur yang lebih kompleks dibandingkan Logistic Regression maupun Random Forest.
 
-**[Jelaskan model advanced yang Anda pilih dan alasannya]**
-
-#### **Model 3 – Deep Learning Model (WAJIB)**
-Model deep learning yang sesuai dengan jenis data.
-**Pilihan Implementasi (pilih salah satu sesuai dataset):**
-**A. Tabular Data:**
-- Multilayer Perceptron (MLP) / Neural Network
-- Minimum: 2 hidden layers
-- Contoh: prediksi harga, klasifikasi binary/multiclass
-
-**B. Image Data:**
-- CNN sederhana (minimum 2 convolutional layers) **ATAU**
-- Transfer Learning (ResNet, VGG, MobileNet, EfficientNet) - **recommended**
-- Contoh: klasifikasi gambar, object detection
-
-**C. Text Data:**
-- LSTM/GRU (minimum 1 layer) **ATAU**
-- Embedding + Dense layers **ATAU**
-- Pre-trained model (BERT, DistilBERT, Word2Vec)
-- Contoh: sentiment analysis, text classification
-
-**D. Time Series:**
-- LSTM/GRU untuk sequential prediction
-- Contoh: forecasting, anomaly detection
-
-**E. Recommender Systems:**
-- Neural Collaborative Filtering (NCF)
-- Autoencoder-based Collaborative Filtering
-- Deep Matrix Factorization
+Alasan pemilihan :
+•	Mampu mempelajari representasi fitur yang kompleks pada data tabular.
+•	Memungkinkan penggunaan teknik regulasi (Dropout, Batch Normalization, L2 Regularization) untuk mencegah overfitting.
+•	Dataset berupa tabular, sehingga model MLP dengan minimum 2 hidden layers wajib digunakan.
+•	Dilatih lebih dari 10 epochs, memiliki grafik learning curve, dan dievaluasi pada test set.
 
 **Minimum Requirements untuk Deep Learning:**
 - ✅ Model harus training minimal 10 epochs
@@ -132,84 +101,70 @@ Model deep learning yang sesuai dengan jenis data.
 - ❌ Model tidak di-train (hanya define arsitektur)
 - ❌ Tidak ada evaluasi pada test set
 
-**[Jelaskan model deep learning yang Anda pilih dan alasannya]**
-
----
-
 ## 4. DATA UNDERSTANDING
 ### 4.1 Informasi Dataset
 **Sumber Dataset:**  
-[Sebutkan sumber: Kaggle, UCI ML Repository, atau sumber lain dengan URL]
+UCI Machine Learning Repository :
+https://archive.ics.uci.edu/dataset/887/national+health+and+nutrition+health+survey+2013-2014+(nhanes)+age+prediction+subset
 
 **Deskripsi Dataset:**
-- Jumlah baris (rows): [angka]
-- Jumlah kolom (columns/features): [angka]
-- Tipe data: [Tabular / Image / Text / Time Series / Audio / Video]
-- Ukuran dataset: [MB/GB]
-- Format file: [CSV / JSON / Images / TXT / etc.]
+•	Jumlah baris (rows): [ 2278 ]
+•	Jumlah kolom (columns/features): [ 7 ( fitur ), 1 ( target ), 2 ( lainnya )]
+•	Tipe data: [ Data Tabular ]
+•	Ukuran dataset: [ 120 kb ]
+•	Format file: [ CSV ]
 
 ### 4.2 Deskripsi Fitur
-Jelaskan setiap fitur/kolom yang ada dalam dataset.
-**Contoh tabel:**
 | Nama Fitur | Tipe Data | Deskripsi | Contoh Nilai |
 |------------|-----------|-----------|--------------|
-| id | Integer | ID unik data | 1, 2, 3 |
-| age | Integer | Usia (tahun) | 25, 30, 45 |
-| income | Float | Pendapatan (juta) | 5.5, 10.2 |
-| category | Categorical | Kategori produk | A, B, C |
-| text | String | Teks ulasan | "Produk bagus..." |
-| image | Image | Citra 224x224 RGB | Array 224x224x3 |
-| label | Categorical | Label target | 0, 1 atau "positif", "negatif" |
-
-**[Buat tabel deskripsi fitur Anda di sini]**
+| RIAGENDR   | Continuous | Gender responden | 1 (Male), 2 (Female) |
+| PAQ605     | Continuous | Aktivitas olahraga mingguan | 1 = Ya, 2 = Tidak |
+| BMXBMI     | Continuous | Body Mass Index (BMI) responden | 20.3, 23.2, 35.7 |
+| LBXGLU     | Continuous | Kadar gula darah puasa (mg/dL) | 89.0, 100.0, 110.0 |
+| DIQ010     | Continuous | Status diabetes | 1.0 (Ya), 2.0 (Tidak) |
+| LBXGLT     | Continuous | Hasil tes gula darah oral | 68.0, 81.0, 150.0 |
+| LBXIN      | Continuous | Kadar insulin darah (µU/mL) | 3.85, 6.14, 16.15 |
 
 ### 4.3 Kondisi Data
 
-Jelaskan kondisi dan permasalahan data:
+- **Missing Values:** Tidak ada missing values di semua kolom.  
+- **Duplicate Data:** Tidak ada duplikasi data.  
+- **Outliers:** Ada, pada fitur:
+  - Fitur PAQ605 memiliki 410 outliers
+  - Fitur BMXBMI memiliki 88 outliers
+  - Fitur LBXGLU memiliki 104 outliers
+  - Fitur DIQ010 memiliki 79 outliers
+  - Fitur LBXGLT memiliki 121 outliers
+  - Fitur LBXIN memiliki 150 outliers
+  - Fitur RIAGENDR tidak memiliki outliers
+- **Imbalanced Data:** Ada, target `age_group` tidak seimbang:
+  - Adult: 1914 sampel
+  - Senior: 364 sampel
+  - Rasio minoritas/majoritas ≈ 0.19
+- **Noise:** Tidak ada  
+- **Data Quality Issues:** Beberapa fitur numerik merepresentasikan kategori
 
-- **Missing Values:** [Ada/Tidak, berapa persen?]
-- **Duplicate Data:** [Ada/Tidak, berapa banyak?]
-- **Outliers:** [Ada/Tidak, pada fitur apa?]
-- **Imbalanced Data:** [Ada/Tidak, rasio kelas?]
-- **Noise:** [Jelaskan jika ada]
-- **Data Quality Issues:** [Jelaskan jika ada masalah lain]
+### 4.4 Exploratory Data Analysis (EDA) 
 
-### 4.4 Exploratory Data Analysis (EDA) - (**OPSIONAL**)
-
-**Requirement:** Minimal 3 visualisasi yang bermakna dan insight-nya.
-**Contoh jenis visualisasi yang dapat digunakan:**
-- Histogram (distribusi data)
-- Boxplot (deteksi outliers)
-- Heatmap korelasi (hubungan antar fitur)
-- Bar plot (distribusi kategori)
-- Scatter plot (hubungan 2 variabel)
-- Wordcloud (untuk text data)
-- Sample images (untuk image data)
-- Time series plot (untuk temporal data)
-- Confusion matrix heatmap
-- Class distribution plot
-
-
-#### Visualisasi 1: [Judul Visualisasi]
-[Insert gambar/plot]
+#### Visualisasi 1: Histogram Distribusi Data Fitur
+![Histogram Distribusi Semua Fitur](images/Histogram%20Distribusi%20Semua%20Fitur.png)
 
 **Insight:**  
-[Jelaskan apa yang dapat dipelajari dari visualisasi ini]
+Berdasarkan histogram, sebagian besar fitur tidak berdistribusi normal dan cenderung miring ke kanan. Nilai glucose (LBXGLU dan LBXGLT) memiliki rentang lebar dengan beberapa outlier tinggi, sedangkan BMI (BMXBMI) terkonsentrasi pada rentang 20–35 yang menunjukkan kategori normal hingga overweight. Fitur diskrit seperti DIQ010 dan PAQ605 tidak seimbang karena didominasi nilai rendah, serta perbedaan skala antar fitur menunjukkan perlunya normalisasi atau standarisasi sebelum pemodelan.
 
-#### Visualisasi 2: [Judul Visualisasi]
+#### Visualisasi 2: Scatter plot hubungan 2 variabel ( BMI vs Glucose dengan label age_group )
 
-[Insert gambar/plot]
-
-**Insight:**  
-[Jelaskan apa yang dapat dipelajari dari visualisasi ini]
-
-#### Visualisasi 3: [Judul Visualisasi]
-
-[Insert gambar/plot]
+![Scatter Plot Fitur dan Label](images/Scatter%20Plot%20Fitur%20dan%20Label.png)
 
 **Insight:**  
-[Jelaskan apa yang dapat dipelajari dari visualisasi ini]
+Scatter plot memperlihatkan bahwa tidak terdapat hubungan linear yang kuat antara BMI dan kadar glucose baik pada kelompok Adult maupun Senior. Mayoritas data berada pada rentang BMI 20–35 dan glucose 80–150, dengan kelompok Senior cenderung memiliki kadar glucose sedikit lebih tinggi pada BMI yang sama. Selain itu, terdapat beberapa outlier dengan kadar glucose sangat tinggi, terutama pada kelompok Adult. Hal ini menunjukkan bahwa BMI saja tidak cukup untuk memprediksi kadar glucose dan faktor usia perlu dipertimbangkan.
 
+#### Visualisasi 3: Heatmap korelasi (hubungan antar fitur)
+
+![Heatmap Korelasi Antar Fitur](images/Heatmap%20Korelasi%20Antar%20Fitur.png)
+
+**Insight:**  
+Heatmap korelasi menunjukkan bahwa sebagian besar fitur memiliki hubungan yang lemah satu sama lain, menandakan rendahnya ketergantungan linear antar variabel. Korelasi paling kuat terlihat antara kadar glukosa darah (LBXGLU) dan tes toleransi glukosa (LBXGLT), serta antara BMI (BMXBMI) dan insulin (LBXIN), yang mengindikasikan adanya keterkaitan kuat antar variabel metabolik. Sementara itu, variabel demografis seperti gender (RIAGENDR) dan aktivitas fisik (PAQ605) menunjukkan korelasi yang sangat rendah terhadap variabel kesehatan metabolik.
 
 
 ---
