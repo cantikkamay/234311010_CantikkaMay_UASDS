@@ -263,7 +263,8 @@ Heatmap korelasi menunjukkan bahwa sebagian besar fitur memiliki hubungan yang l
 ### 6.1 Model 1 — Baseline Model
 #### 6.1.1 Deskripsi Model
 
-**Nama Model:** Logistic Regression
+**Nama Model:** Logistic Regression  
+
 **Teori Singkat:**  
 Logistic Regression adalah model klasifikasi linear yang memprediksi probabilitas sampel termasuk suatu kelas menggunakan fungsi logit (sigmoid). Keputusan dibuat berdasarkan probabilitas ≥ 0.5 (kelas 1) atau < 0.5 (kelas 0). Model ini juga memberikan interpretasi jelas melalui koefisien fitur yang menunjukkan pengaruh tiap variabel terhadap peluang kelas.
 
@@ -316,6 +317,7 @@ Model mencapai akurasi tinggi (>0.83), tetapi performa untuk mendeteksi kelas Se
 #### 6.2.1 Deskripsi Model
 
 **Nama Model:** Random Forest Classifier
+
 **Teori Singkat:**  
 Random Forest adalah ensemble learning berbasis Decision Tree yang membangun banyak pohon secara acak. Setiap pohon dilatih menggunakan subset data dan fitur berbeda, hasil akhir ditentukan lewat voting mayoritas. Metode ini mengurangi overfitting dan meningkatkan akurasi.
 
@@ -440,9 +442,9 @@ Model menggunakan 3 hidden layer dengan regularisasi untuk mencegah overfitting.
 | Dropout            | (16,)        | –        | 0.25                           |
 | Dense (Output)     | (1,)         | Sigmoid  | –                              |
 
-**Total params :** 10,181
-**Trainable params :** 3,329
-**Non-trainable params :** 192 
+**Total params :** 10,181  
+**Trainable params :** 3,329  
+**Non-trainable params :** 192  
 
 #### 6.3.3 Input & Preprocessing Khusus
 
@@ -552,28 +554,28 @@ Waktu training total ± 1 menit
 CPU, platform : Google Colab 
 
 **Training History Visualization:**
-1. **Training & Validation Loss** per epoch
-![Training & Validation Loss per Epoch](images/Training%20%26%20Validation%20Loss%20perEpoch.png)
+1. **Training & Validation Loss** per epoch  
+![Training & Validation Loss per Epoch](images/Training%20%26%20Validation%20Loss%20perEpoch.png)  
 
 Grafik menunjukkan training loss dan validation loss sama-sama menurun seiring bertambahnya epoch, menandakan model berhasil mempelajari pola data. Validation loss turun tajam di awal lalu stabil, bahkan sedikit lebih rendah dari training loss, yang menunjukkan tidak terjadi overfitting dan model memiliki generalisasi yang baik.
 
-2. **Training & Validation Accuracy/Metric** per epoch
-![Training & Validation Accuracy per Epoch](images/Training%20%26%20Validation%20Accuracy%20perEpoch.png)
+2. **Training & Validation Accuracy/Metric** per epoch  
+![Training & Validation Accuracy per Epoch](images/Training%20%26%20Validation%20Accuracy%20perEpoch.png)  
 
 Akurasi training dan validation meningkat hingga stabil. Validation accuracy sedikit lebih tinggi dari training accuracy, menunjukkan generalisasi yang baik. Fluktuasi kecil yang terjadi bersifat wajar dan tidak menunjukkan penurunan performa signifikan.
 
 **Analisis Training:**
--  **Apakah model mengalami overfitting?** Tidak
+-  **Apakah model mengalami overfitting?** Tidak  
    Model tidak menunjukkan overfitting yang signifikan. Validation loss mengikuti training loss yang menurun dan stabil, serta validation accuracy konsisten lebih tinggi dari training accuracy, menandakan model mampu melakukan generalisasi dengan baik tanpa gap besar antara data train dan validasi.
 
--  **Apakah model sudah converge?** Ya, Sudah
+-  **Apakah model sudah converge?** Ya, Sudah  
    Dilihat dari nilai Loss train & val tidak banyak berubah setelah epoch 10–12, kemudian Accuracy juga stabil di kisaran 0.6–0.7 dan Tidak terlihat tren naik/turun yang tajam menuju akhir epoch.
 
--  **Apakah perlu lebih banyak epoch?** Tidak
+-  **Apakah perlu lebih banyak epoch?** Tidak  
    Karena di atas epoch 15, loss cenderung datar, kemudian Validation accuracy tidak meningkat lagi secara signifikan. Jadi menambah epoch kemungkinan tidak memberi peningkatan, bahkan berpotensi overfitting.
 
 #### 6.3.7 Model Summary
-```
+
 | Layer (Type)              | Output Shape | Param # |
 |---------------------------|--------------|---------|
 | Dense (64)                | (None, 64)   | 512     |
@@ -586,11 +588,10 @@ Akurasi training dan validation meningkat hingga stabil. Validation accuracy sed
 | Dropout                   | (None, 16)   | 0       |
 | Dense (Output)            | (None, 1)    | 17      |
 
-**Total Parameters:** 10,181 (39.77 KB)  
-**Trainable Parameters:** 3,329 (13.00 KB)  
-**Non-trainable Parameters:** 192 (768.00 B)  
-**Optimizer Parameters:** 6,660 (26.02 KB)
-```
+**Total Parameters:** 10,181 (39.77 KB)   
+**Trainable Parameters:** 3,329 (13.00 KB)   
+**Non-trainable Parameters:** 192 (768.00 B)    
+**Optimizer Parameters:** 6,660 (26.02 KB)  
 
 ---
 
@@ -604,16 +605,18 @@ Akurasi training dan validation meningkat hingga stabil. Validation accuracy sed
 - **Precision**  
   Mengukur seberapa banyak prediksi positif yang benar.  
   Rumus:  
-  $$ 
+
+  $$
   \text{Precision} = \frac{TP}{TP + FP}
-  $$ 
+  $$
 
 - **Recall**  
   Mengukur kemampuan model dalam menangkap seluruh kasus positif.  
   Rumus:  
-  $$ 
+
+  $$
   \text{Recall} = \frac{TP}{TP + FN}
-  $$ 
+  $$
 
 - **F1-Score**  
   Rata-rata seimbang antara Precision dan Recall, efektif untuk dataset dengan ketidakseimbangan kelas.
@@ -629,19 +632,19 @@ Metrik-metrik ini dipilih karena dataset bersifat tidak seimbang, sehingga evalu
 
 **Metrik:**
 ```
-- **Train Set:**
+- Train Set:
   - Accuracy = 0.8401  
   - Precision = 0.5000  
   - Recall = 0.0515  
   - F1-Score = 0.0934  
 
-- **Validation Set:**
+- Validation Set:
   - Accuracy = 0.8493  
   - Precision = 0.7143  
   - Recall = 0.0862  
   - F1-Score = 0.1538  
 
-- **Test Set:**
+- Test Set:
   - Accuracy = 0.8333  
   - Precision = 0.2857  
   - Recall = 0.0274  
@@ -649,7 +652,7 @@ Metrik-metrik ini dipilih karena dataset bersifat tidak seimbang, sehingga evalu
 ```
 
 **Confusion Matrix / Visualization:**  
-![Confusion Matrix Logistic Regression](images/Confusion%20matrix%20LR.png)
+![Confusion Matrix Logistic Regression](images/Confusion%20matrix%20LR.png)  
 Model Logistic Regression sangat akurat dalam memprediksi kelas Adult (378 benar, 5 salah), tetapi gagal mengenali kelas Senior. Dari 73 kasus Senior, hanya 2 terdeteksi dengan benar dan 71 salah diklasifikasikan sebagai Adult, menunjukkan bias kuat ke kelas Adult akibat ketidakseimbangan data atau keterbatasan model.
 
 #### 7.2.2 Model 2 - Advanced Machine Learning - Random Forest
@@ -676,11 +679,11 @@ Model Logistic Regression sangat akurat dalam memprediksi kelas Adult (378 benar
 ```
 
 **Confusion Matrix / Visualization:**  
-![Confusion Matrix Random Forest](images/Confusion%20Matrix%20RF.png)
+![Confusion Matrix Random Forest](images/Confusion%20Matrix%20RF.png)  
 Random Forest meningkatkan deteksi kelas Senior dengan 20 prediksi benar dan kinerja yang lebih seimbang (FP = 28, FN = 53). Meski prediksi benar kelas Adult menurun dari 378 menjadi 355, penurunan ini merupakan trade-off yang wajar untuk meningkatkan kemampuan mendeteksi kelas Senior.
 
 **Feature Importance (jika applicable):**  
-![Feature Importance Random Forest](images/Feature%20Importance%20Random%20Forest.png)
+![Feature Importance Random Forest](images/Feature%20Importance%20Random%20Forest.png)  
 Berdasarkan feature importance Random Forest, LBXGLT menjadi fitur paling berpengaruh, diikuti BMXBMI. LBXIN dan LBXGLU berperan sebagai faktor pendukung, sementara PAQ605 dan RIAGENDR berkontribusi kecil. DIQ010 memiliki pengaruh paling rendah dalam model.
 
 #### 7.2.3 Model 3 - Deep Learning - MULTILAYER PERCEPTRON (MLP)
@@ -707,12 +710,12 @@ Berdasarkan feature importance Random Forest, LBXGLT menjadi fitur paling berpen
 ```
 
 **Confusion Matrix / Visualization:**  
-![Confusion Matrix Deep Learning](images/Confusion%20Matrix%20DL.png)
+![Confusion Matrix Deep Learning](images/Confusion%20Matrix%20DL.png)  
 Model Deep Learning paling baik dalam mendeteksi kelas Senior (True Negative = 41, recall tertinggi), namun performa pada kelas Adult menurun dengan 88 False Negative. Hal ini menunjukkan trade-off yang jelas antara peningkatan recall Senior dan penurunan precision pada kelas Adult.
 
 **Test Set Predictions:**  
-![Contoh Prediksi Test Set](images/Contoh%20prediksi.png)
-Menampilkan 10 contoh hasil prediksi
+![Contoh Prediksi Test Set](images/Contoh%20prediksi.png)  
+Menampilkan 10 contoh hasil prediksi  
 
 ### 7.3 Perbandingan Ketiga Model
 
