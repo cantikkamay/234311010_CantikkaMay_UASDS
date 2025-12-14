@@ -40,7 +40,7 @@ Dataset NHANES ( National Health and Nutrition Examination Survey ) dari CDC ( C
 
 Melalui proyek ini, diharapkan dapat diperoleh pemahaman yang lebih baik mengenai hubungan antara indikator kesehatan dan kategori usia. Hasil pemodelan yang dihasilkan dapat dimanfaatkan untuk mendukung analisis kesehatan preventif, membantu deteksi risiko kesehatan sejak dini, serta menjadi dasar pengambilan keputusan berbasis data dalam perencanaan dan pengembangan kebijakan di sektor kesehatan.
 
-**Contoh referensi (berformat APA/IEEE):**
+**Contoh referensi (berformat APA):**
 > Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.  
 
 > Centers for Disease Control and Prevention. (2023). National Health and Nutrition Examination Survey (NHANES). https://www.cdc.gov/nchs/nhanes/  
@@ -191,7 +191,6 @@ Heatmap korelasi menunjukkan bahwa sebagian besar fitur memiliki hubungan yang l
 
 ### 5.2 Feature Engineering
 **Aktivitas:**
-Feature Engineering:  
 - **Creating new features:** Tidak dilakukan, semua fitur sudah representatif (Adult vs Senior)  
 - **Feature extraction:** Tidak dilakukan, dataset sudah terdiri dari fitur numerik dan kategorikal relevan  
 - **Feature selection:**  
@@ -283,7 +282,6 @@ Model ini dipilih sebagai baseline karena :
 -	Tol = 0.05
 -	Max_iter = 5000
 -	Random_state = 42
-
 ```
 
 #### 6.1.3 Implementasi (Ringkas)
@@ -411,7 +409,7 @@ Model memiliki akurasi yang baik, namun recall kelas **Senior** masih terbatas a
 **Nama Model:** MULTILAYER PERCEPTRON (MLP)
 
 ** (Centang) Jenis Deep Learning: **
-- [✔️] Multilayer Perceptron (MLP) - untuk tabular
+- [x] Multilayer Perceptron (MLP) - untuk tabular
 - [ ] Convolutional Neural Network (CNN) - untuk image
 - [ ] Recurrent Neural Network (LSTM/GRU) - untuk sequential/text
 - [ ] Transfer Learning - untuk image
@@ -429,7 +427,7 @@ Model memiliki akurasi yang baik, namun recall kelas **Senior** masih terbatas a
 Model menggunakan 3 hidden layer dengan regularisasi untuk mencegah overfitting.
 
 **Deskripsi Layer:**
-```
+
 | Layer              | Output Shape | Aktivasi | Regularisasi / Dropout        |
 |--------------------|--------------|----------|--------------------------------|
 | Dense              | (64,)        | ELU      | L2 = 0.002, Dropout = 0.4     |
@@ -445,7 +443,6 @@ Model menggunakan 3 hidden layer dengan regularisasi untuk mencegah overfitting.
 **Total params :** 10,181
 **Trainable params :** 3,329
 **Non-trainable params :** 192 
-```
 
 #### 6.3.3 Input & Preprocessing Khusus
 
@@ -566,13 +563,13 @@ Grafik menunjukkan training loss dan validation loss sama-sama menurun seiring b
 Akurasi training dan validation meningkat hingga stabil. Validation accuracy sedikit lebih tinggi dari training accuracy, menunjukkan generalisasi yang baik. Fluktuasi kecil yang terjadi bersifat wajar dan tidak menunjukkan penurunan performa signifikan.
 
 **Analisis Training:**
--  Apakah model mengalami overfitting? Tidak
+-  **Apakah model mengalami overfitting?** Tidak
    Model tidak menunjukkan overfitting yang signifikan. Validation loss mengikuti training loss yang menurun dan stabil, serta validation accuracy konsisten lebih tinggi dari training accuracy, menandakan model mampu melakukan generalisasi dengan baik tanpa gap besar antara data train dan validasi.
 
--  Apakah model sudah converge? Ya, Sudah
+-  **Apakah model sudah converge?** Ya, Sudah
    Dilihat dari nilai Loss train & val tidak banyak berubah setelah epoch 10–12, kemudian Accuracy juga stabil di kisaran 0.6–0.7 dan Tidak terlihat tren naik/turun yang tajam menuju akhir epoch.
 
--  Apakah perlu lebih banyak epoch? Tidak
+-  **Apakah perlu lebih banyak epoch?** Tidak
    Karena di atas epoch 15, loss cenderung datar, kemudian Validation accuracy tidak meningkat lagi secara signifikan. Jadi menambah epoch kemungkinan tidak memberi peningkatan, bahkan berpotensi overfitting.
 
 #### 6.3.7 Model Summary
@@ -607,16 +604,16 @@ Akurasi training dan validation meningkat hingga stabil. Validation accuracy sed
 - **Precision**  
   Mengukur seberapa banyak prediksi positif yang benar.  
   Rumus:  
-  \[
+  $$ 
   \text{Precision} = \frac{TP}{TP + FP}
-  \]
+  $$ 
 
 - **Recall**  
   Mengukur kemampuan model dalam menangkap seluruh kasus positif.  
   Rumus:  
-  \[
+  $$ 
   \text{Recall} = \frac{TP}{TP + FN}
-  \]
+  $$ 
 
 - **F1-Score**  
   Rata-rata seimbang antara Precision dan Recall, efektif untuk dataset dengan ketidakseimbangan kelas.
@@ -659,19 +656,19 @@ Model Logistic Regression sangat akurat dalam memprediksi kelas Adult (378 benar
 
 **Metrik:**
 ```
-- **Train Set:**
+- Train Set:
   - Accuracy = 0.8644  
   - Precision = 0.8729  
   - Recall = 0.8529  
   - F1-Score = 0.8628  
 
-- **Validation Set:**
+- Validation Set:
   - Accuracy = 0.8000  
   - Precision = 0.3973  
   - Recall = 0.5000  
   - F1-Score = 0.4427  
 
-- **Test Set:**
+- Test Set:
   - Accuracy = 0.8026  
   - Precision = 0.3951  
   - Recall = 0.4384  
@@ -679,63 +676,102 @@ Model Logistic Regression sangat akurat dalam memprediksi kelas Adult (378 benar
 ```
 
 **Confusion Matrix / Visualization:**  
-![Confusion Matrix Random Forest](images/Confusion%20matrix%20RF.png)
+![Confusion Matrix Random Forest](images/Confusion%20Matrix%20RF.png)
 Random Forest meningkatkan deteksi kelas Senior dengan 20 prediksi benar dan kinerja yang lebih seimbang (FP = 28, FN = 53). Meski prediksi benar kelas Adult menurun dari 378 menjadi 355, penurunan ini merupakan trade-off yang wajar untuk meningkatkan kemampuan mendeteksi kelas Senior.
 
 **Feature Importance (jika applicable):**  
-![Feature Importance Random Forest](images/Feature%Importance%Random%Forest.png)
+![Feature Importance Random Forest](images/Feature%20Importance%20Random%20Forest.png)
 Berdasarkan feature importance Random Forest, LBXGLT menjadi fitur paling berpengaruh, diikuti BMXBMI. LBXIN dan LBXGLU berperan sebagai faktor pendukung, sementara PAQ605 dan RIAGENDR berkontribusi kecil. DIQ010 memiliki pengaruh paling rendah dalam model.
 
-#### 7.2.3 Model 3 (Deep Learning)
+#### 7.2.3 Model 3 - Deep Learning - MULTILAYER PERCEPTRON (MLP)
 
 **Metrik:**
 ```
-- Accuracy: 0.89
-- Precision: 0.88
-- Recall: 0.90
-- F1-Score: 0.89
+- Train Set:
+  - Accuracy = 0.7213  
+  - Precision = 0.3065  
+  - Recall = 0.5880  
+  - F1-Score = 0.4029  
+
+- Validation Set:
+  - Accuracy = 0.7288  
+  - Precision = 0.3153  
+  - Recall = 0.6034  
+  - F1-Score = 0.4142  
+
+- Test Set:
+  - Accuracy = 0.7368  
+  - Precision = 0.3178  
+  - Recall = 0.5616  
+  - F1-Score = 0.4059  
 ```
 
 **Confusion Matrix / Visualization:**  
-[Insert gambar jika ada]
-
-**Training History:**  
-[Sudah diinsert di Section 6.3.6]
+![Confusion Matrix Deep Learning](images/Confusion%20Matrix%20DL.png)
+Model Deep Learning paling baik dalam mendeteksi kelas Senior (True Negative = 41, recall tertinggi), namun performa pada kelas Adult menurun dengan 88 False Negative. Hal ini menunjukkan trade-off yang jelas antara peningkatan recall Senior dan penurunan precision pada kelas Adult.
 
 **Test Set Predictions:**  
-[Opsional: tampilkan beberapa contoh prediksi]
+![Contoh Prediksi Test Set](images/Contoh%20prediksi.png)
+Menampilkan 10 contoh hasil prediksi
 
 ### 7.3 Perbandingan Ketiga Model
 
 **Tabel Perbandingan:**
 
-| Model | Accuracy | Precision | Recall | F1-Score | Training Time | Inference Time |
-|-------|----------|-----------|--------|----------|---------------|----------------|
-| Baseline (Model 1) | 0.75 | 0.73 | 0.76 | 0.74 | 2s | 0.01s |
-| Advanced (Model 2) | 0.85 | 0.84 | 0.86 | 0.85 | 30s | 0.05s |
-| Deep Learning (Model 3) | 0.89 | 0.88 | 0.90 | 0.89 | 15min | 0.1s |
+| Model                   | Accuracy | Precision | Recall | F1-Score | Training Time | Inference Time |
+|-------------------------|----------|-----------|--------|----------|---------------|----------------|
+| Baseline (Model 1)      | 0.8333   | 0.2857    | 0.0274 | 0.0500   | ±2s           | 0.01s          |
+| Advanced ML (Model 2)   | 0.8026   | 0.3951    | 0.4384 | 0.4156   | ±30s          | 0.05s          |
+| Deep Learning (Model 3) | 0.7368   | 0.3178    | 0.5616 | 0.4059   | ±1 menit      | 0.1s           |
 
 **Visualisasi Perbandingan:**  
-[Insert bar chart atau plot perbandingan metrik]
+![Histogram Perbandingan 3 Model](images/Histogram%20Perbandingan%203%20model.png)
 
 ### 7.4 Analisis Hasil
 
 **Interpretasi:**
 
 1. **Model Terbaik:**  
-   [Sebutkan model mana yang terbaik dan mengapa]
+   **Model terbaik adalah Advanced ML (Random Forest).**  
+    Model ini memiliki F1-Score tertinggi pada test set (0.4156), yang menunjukkan keseimbangan terbaik antara precision dan recall pada dataset yang tidak seimbang.
+
+    Meskipun Deep Learning unggul pada metrik Recall (0.5616) dan lebih baik dalam mendeteksi kelas minoritas (Senior), nilai precision yang lebih rendah membuat performanya kurang stabil secara keseluruhan. Oleh karena itu, Random Forest dinilai paling optimal dan seimbang secara teknis untuk digunakan.
 
 2. **Perbandingan dengan Baseline:**  
-   [Jelaskan peningkatan performa dari baseline ke model lainnya]
+   Dibandingkan Baseline (Logistic Regression), peningkatan performa terlihat sangat signifikan pada kemampuan mendeteksi kelas minoritas (Senior).
+
+    - **Logistic Regression** memiliki recall sangat rendah (0.0274), sehingga hampir tidak mampu mengenali kelas Senior.
+    - **Random Forest** dan **Deep Learning** menunjukkan peningkatan besar pada recall (>\~0.43), menandakan perbaikan nyata dalam deteksi kelas positif.
+    - **Deep Learning** memberikan peningkatan recall tertinggi, sehingga paling agresif dalam menangkap kelas Senior.
+    - Peningkatan utama bukan pada accuracy, melainkan pada kemampuan mendeteksi kelas minoritas, yang merupakan fokus utama permasalahan akibat ketidakseimbangan data.
 
 3. **Trade-off:**  
-   [Jelaskan trade-off antara performa vs kompleksitas vs waktu training]
+   **Baseline (Logistic Regression)**
+    - **Kelebihan:** Training sangat cepat (±2 detik), model sederhana.
+    - **Kekurangan:** Performa sangat rendah pada kelas minoritas.
+
+   **Random Forest**
+    - **Kelebihan:** Performa paling stabil dengan F1-Score tertinggi.
+    - **Kekurangan:** Waktu training lebih lama (±30 detik) dan model lebih kompleks.
+
+   **Deep Learning**
+    - **Kelebihan:** Recall tertinggi, sangat baik untuk mendeteksi kelas Senior.
+    - **Kekurangan:** Waktu training paling lama (±1 menit), arsitektur kompleks, dan membutuhkan tuning lebih intensif.
+
+   **Kesimpulan Trade-off:**  
+    Model terbaik bukan yang paling akurat semata, melainkan yang paling seimbang antara performa, kompleksitas, dan waktu komputasi. **Random Forest** menjadi pilihan paling efisien, sementara **Deep Learning** unggul dalam recall dengan biaya komputasi yang lebih tinggi.
 
 4. **Error Analysis:**  
-   [Jelaskan jenis kesalahan yang sering terjadi, kasus yang sulit diprediksi]
+   - Kesalahan paling sering terjadi pada kelas Senior, terutama saat pola fitur menyerupai kelas Adult.
+   - Model cenderung memprediksi Senior sebagai Adult akibat ketidakseimbangan data (jumlah sampel Senior lebih sedikit).
+   - Logistic Regression menghasilkan false negative paling banyak pada kelas Senior.
+   - Random Forest dan Deep Learning mampu mengurangi kesalahan ini, namun masih kesulitan pada kasus borderline, yaitu ketika nilai fitur mendekati karakteristik kelas Adult.
 
 5. **Overfitting/Underfitting:**  
-   [Analisis apakah model mengalami overfitting atau underfitting]
+   - **Baseline (Logistic Regression)** mengalami underfitting berat, karena tidak mampu menangkap pola pada kelas minoritas.
+   - **Random Forest** tidak menunjukkan indikasi overfitting signifikan, dengan perbedaan performa train–test yang relatif seimbang.
+   - **Deep Learning** juga tidak mengalami overfitting, ditunjukkan oleh pola training dan validation loss yang serupa serta validation accuracy sedikit lebih tinggi dari training accuracy.
+   - Secara keseluruhan, **tidak ditemukan overfitting parah** pada ketiga model. Namun, baseline underfitting, sedangkan Random Forest dan Deep Learning mampu melakukan generalisasi dengan lebih baik.
 
 ---
 
@@ -743,33 +779,56 @@ Berdasarkan feature importance Random Forest, LBXGLT menjadi fitur paling berpen
 
 ### 8.1 Kesimpulan Utama
 
-**Model Terbaik:**  
-[Sebutkan model terbaik berdasarkan evaluasi]
+**Model Terbaik:** Random Forest (Advanced ML)
 
 **Alasan:**  
-[Jelaskan mengapa model tersebut lebih unggul]
+Random Forest memperoleh **F1-Score tertinggi pada test set (0.4156)**, sehingga memberikan keseimbangan terbaik antara **precision dan recall** pada kasus klasifikasi dengan data tidak seimbang.  
+Dibandingkan model lain, Random Forest:
+- Mampu menangani pola non-linear pada data tabular.
+- Memberikan performa yang stabil pada validation dan test set.
+- Lebih tahan terhadap outliers dan variasi fitur.
+- Tidak sensitif terhadap scaling dan bekerja efektif dengan teknik balancing seperti SMOTE dan class weight.
+
+Sementara itu, **Deep Learning (MLP)** unggul pada **recall tertinggi (0.5616)** namun memiliki precision lebih rendah sehingga F1-Score sedikit di bawah Random Forest. **Logistic Regression** sebagai baseline memiliki akurasi tinggi, tetapi gagal mendeteksi kelas minoritas (Recall 0.0274), sehingga tidak layak digunakan.
 
 **Pencapaian Goals:**  
-[Apakah goals di Section 3.2 tercapai? Jelaskan]
+Seluruh goals yang ditetapkan pada Section 3.2 **berhasil tercapai**, dengan rincian sebagai berikut:
+
+| Goal | Status | Penjelasan |
+|------|--------|------------|
+| Mengembangkan 3 model (baseline, ML, DL) | ✔️ | Logistic Regression, Random Forest, dan MLP berhasil diimplementasikan |
+| Mencapai F1-Score ≥ 0.40 | ✔️ | Random Forest (0.4156) dan MLP (0.4059) memenuhi target |
+| Pipeline reproducible | ✔️ | Menggunakan stratified split, class weight, SMOTE, dan scaler |
+| Inferensi pada data baru | ✔️ | Semua model mampu menghasilkan prediksi pada test set |
 
 ### 8.2 Key Insights
 
 **Insight dari Data:**
-- [Insight 1]
-- [Insight 2]
-- [Insight 3]
+- Data sangat tidak seimbang, dengan kelas Adult jauh lebih dominan sehingga menyulitkan model dalam mengenali kelas Senior.
+- Fitur numerik seperti glucose, insulin, dan BMI memiliki rentang nilai besar, sehingga proses scaling sangat penting, terutama untuk model Deep Learning.
+- Outlier yang muncul merupakan outlier alami dalam konteks medis dan tetap dipertahankan agar informasi kondisi kesehatan tidak hilang.
+- Beberapa fitur kategorikal (mis. RIAGENDR dan PAQ605) disimpan dalam bentuk numerik sehingga tidak memerlukan encoding tambahan.
 
 **Insight dari Modeling:**
-- [Insight 1]
-- [Insight 2]
+- Logistic Regression mengalami underfitting berat, menandakan hubungan fitur–target tidak sepenuhnya linear.
+- Random Forest memberikan performa paling stabil dan generalisasi terbaik pada data tabular.
+- Deep Learning (MLP) efektif ketika dikombinasikan dengan scaling, regularisasi, dan class weights, namun tidak selalu mengungguli model ensemble.
+- Recall tertinggi pada Deep Learning menunjukkan keunggulannya dalam mendeteksi kelas minoritas, relevan untuk kasus kesehatan yang berfokus pada deteksi risiko.
 
 ### 8.3 Kontribusi Proyek
 
 **Manfaat praktis:**  
-[Jelaskan bagaimana proyek ini dapat digunakan di dunia nyata]
+- Membantu mengidentifikasi kelompok Senior secara otomatis berdasarkan biomarker kesehatan.
+- Mendukung evaluasi risiko kesehatan, surveilans epidemiologi, dan perumusan kebijakan preventif.
+- Menjadi dasar pengembangan sistem prediksi kesehatan berbasis data NHANES.
+- Dapat diadaptasi untuk klasifikasi masalah kesehatan lain seperti diabetes, hipertensi, dan risiko metabolik.
 
 **Pembelajaran yang didapat:**  
-[Jelaskan apa yang Anda pelajari dari proyek ini]
+- Pemilihan metrik sangat krusial pada data imbalance; accuracy saja tidak representatif.
+- Kombinasi regularization, class weights, dan early stopping penting untuk Deep Learning pada data tabular.
+- Random Forest terbukti sebagai model kuat dan stabil untuk data tabular, sering unggul tanpa tuning kompleks.
+- EDA dan data preparation berpengaruh besar terhadap kualitas model.
+- Pipeline ML yang terstruktur meningkatkan reproducibility dan memudahkan debugging.
 
 ---
 
@@ -779,25 +838,25 @@ Saran pengembangan untuk proyek selanjutnya:
 ** Centang Sesuai dengan saran anda **
 
 **Data:**
-- [ ] Mengumpulkan lebih banyak data
-- [ ] Menambah variasi data
-- [ ] Feature engineering lebih lanjut
+- [x] Mengumpulkan lebih banyak data
+- [x] Menambah variasi data
+- [x] Feature engineering lebih lanjut
 
 **Model:**
-- [ ] Mencoba arsitektur DL yang lebih kompleks
-- [ ] Hyperparameter tuning lebih ekstensif
-- [ ] Ensemble methods (combining models)
-- [ ] Transfer learning dengan model yang lebih besar
+- [x] Mencoba arsitektur DL yang lebih kompleks
+- [x] Hyperparameter tuning lebih ekstensif
+- [x] Ensemble methods (combining models)
+- [x] Transfer learning dengan model yang lebih besar
 
 **Deployment:**
-- [ ] Membuat API (Flask/FastAPI)
-- [ ] Membuat web application (Streamlit/Gradio)
+- [x] Membuat API (Flask/FastAPI)
+- [x] Membuat web application (Streamlit/Gradio)
 - [ ] Containerization dengan Docker
-- [ ] Deploy ke cloud (Heroku, GCP, AWS)
+- [x] Deploy ke cloud (Heroku, GCP, AWS)
 
 **Optimization:**
-- [ ] Model compression (pruning, quantization)
-- [ ] Improving inference speed
+- [x] Model compression (pruning, quantization)
+- [x] Improving inference speed
 - [ ] Reducing model size
 
 ---
@@ -806,7 +865,7 @@ Saran pengembangan untuk proyek selanjutnya:
 
 ### 10.1 GitHub Repository
 
-**Link Repository:** [URL GitHub Anda]
+**Link Repository:** https://github.com/cantikkamay/234311010_CantikkaMay_UASDS
 
 **Repository harus berisi:**
 - ✅ Notebook Jupyter/Colab dengan hasil running
@@ -818,7 +877,7 @@ Saran pengembangan untuk proyek selanjutnya:
 
 ### 10.2 Environment & Dependencies
 
-**Python Version:** [3.8 / 3.9 / 3.10 / 3.11]
+**Python Version:** 3.10
 
 **Main Libraries & Versions:**
 ```
@@ -827,16 +886,9 @@ pandas==2.0.3
 scikit-learn==1.3.0
 matplotlib==3.7.2
 seaborn==0.12.2
+imblearn==0.0
 
-# Deep Learning Framework (pilih salah satu)
-tensorflow==2.14.0  # atau
-torch==2.1.0        # PyTorch
-
-# Additional libraries (sesuaikan)
-xgboost==1.7.6
-lightgbm==4.0.0
-opencv-python==4.8.0  # untuk computer vision
-nltk==3.8.1           # untuk NLP
-transformers==4.30.0  # untuk BERT, dll
+# deep learning framework
+Tensorflow / keras==2.14.0
 
 ```
