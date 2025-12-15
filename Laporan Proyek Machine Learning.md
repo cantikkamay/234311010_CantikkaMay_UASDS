@@ -1,7 +1,8 @@
 ## INFORMASI PROYEK
 
 **Judul Proyek:**  
-National Health and Nutrition Health Survey 2013-2014 (NHANES) Age Prediction Subset (Prediksi Kategori Usia (Senior vs Non-Senior) Menggunakan Machine Learning dan Deep Learning pada Dataset NHANES)
+**National Health and Nutrition Health Survey 2013-2014 (NHANES) Age Prediction Subset**  
+(Prediksi Kategori Usia (Senior vs Non-Senior) Menggunakan Machine Learning dan Deep Learning pada Dataset NHANES)
 
 **Nama Mahasiswa:** CANTIKKA MAY ARISTIANTI  
 **NIM:** 234311010  
@@ -40,7 +41,7 @@ Dataset NHANES ( National Health and Nutrition Examination Survey ) dari CDC ( C
 
 Melalui proyek ini, diharapkan dapat diperoleh pemahaman yang lebih baik mengenai hubungan antara indikator kesehatan dan kategori usia. Hasil pemodelan yang dihasilkan dapat dimanfaatkan untuk mendukung analisis kesehatan preventif, membantu deteksi risiko kesehatan sejak dini, serta menjadi dasar pengambilan keputusan berbasis data dalam perencanaan dan pengembangan kebijakan di sektor kesehatan.
 
-**Contoh referensi (berformat APA):**
+**Referensi (berformat APA):**
 > Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.  
 
 > Centers for Disease Control and Prevention. (2023). National Health and Nutrition Examination Survey (NHANES). https://www.cdc.gov/nchs/nhanes/  
@@ -50,8 +51,6 @@ Melalui proyek ini, diharapkan dapat diperoleh pemahaman yang lebih baik mengena
 > Topol, E. J. (2022). *High-performance medicine: The convergence of human and artificial intelligence*. Nature Medicine, 28, 44–56. https://doi.org/10.1038/s41591-021-01645-6  
 
 > Putra, A. R., & Wibowo, A. (2021). Penerapan machine learning untuk analisis data kesehatan di Indonesia. *Jurnal Sistem Informasi Indonesia, 6*(2), 120–130. 
-
-**[Jelaskan konteks dan latar belakang proyek]**
 
 ## 3. BUSINESS UNDERSTANDING / PROBLEM UNDERSTANDING
 ### 3.1 Problem Statements
@@ -121,6 +120,7 @@ https://archive.ics.uci.edu/dataset/887/national+health+and+nutrition+health+sur
 - Format file: [ CSV ]
 
 ### 4.2 Deskripsi Fitur
+
 | Nama Fitur | Tipe Data | Deskripsi | Contoh Nilai |
 |------------|-----------|-----------|--------------|
 | RIAGENDR   | Continuous | Gender responden | 1 (Male), 2 (Female) |
@@ -612,7 +612,6 @@ Akurasi training dan validation meningkat hingga stabil. Validation accuracy sed
 
 - **Recall**  
   Mengukur kemampuan model dalam menangkap seluruh kasus positif.  
-  Rumus:  
 
   $$
   \text{Recall} = \frac{TP}{TP + FN}
@@ -880,11 +879,11 @@ Saran pengembangan untuk proyek selanjutnya:
 
 ### 10.2 Environment & Dependencies
 
-**Python Version:** 3.10
+**Python Version:** 3.12.12
 
 **Main Libraries & Versions:**
 ```
-numpy==1.24.3
+numpy==1.26.3
 pandas==2.0.3
 scikit-learn==1.3.0
 matplotlib==3.7.2
