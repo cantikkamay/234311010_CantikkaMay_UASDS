@@ -11,7 +11,7 @@
 **Dosen Pengampu:** GUS NANANG SYAIFUDDIIN  
 **Tahun Akademik:** 2025 / 5  
 **Link GitHub Repository:** https://github.com/cantikkamay/234311010_CantikkaMay_UASDS  
-**Link Video Pembahasan:** [URL Repository]
+**Link Video Pembahasan:** https://youtu.be/FkQBmlQ81i8  
 
 ---
 

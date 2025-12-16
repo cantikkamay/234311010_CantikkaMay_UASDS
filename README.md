@@ -5,7 +5,7 @@
 ## 👤 Informasi
 - **Nama:** CANTIKKA MAY ARISTIANTI  
 - **Repo:** https://github.com/cantikkamay/234311010_CantikkaMay_UASDS    
-- **Video:** [...]  
+- **Video:** https://youtu.be/FkQBmlQ81i8  
 
 ---
 
