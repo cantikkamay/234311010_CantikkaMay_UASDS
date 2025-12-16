@@ -613,9 +613,7 @@ Akurasi training dan validation meningkat hingga stabil. Validation accuracy sed
 - **Recall**  
   Mengukur kemampuan model dalam menangkap seluruh kasus positif.  
 
-  $$
-  \text{Recall} = \frac{TP}{TP + FN}
-  $$
+  Recall = TP / (TP + FN)  
 
 - **F1-Score**  
   Rata-rata seimbang antara Precision dan Recall, efektif untuk dataset dengan ketidakseimbangan kelas.
