@@ -679,7 +679,7 @@ Model Logistic Regression sangat akurat dalam memprediksi kelas Adult (378 benar
 
 **Confusion Matrix / Visualization:**  
 ![Confusion Matrix Random Forest](images/Confusion%20Matrix%20RF.png)  
-Random Forest meningkatkan deteksi kelas Senior dengan 20 prediksi benar dan kinerja yang lebih seimbang (FP = 28, FN = 53). Meski prediksi benar kelas Adult menurun dari 378 menjadi 355, penurunan ini merupakan trade-off yang wajar untuk meningkatkan kemampuan mendeteksi kelas Senior.
+Random Forest meningkatkan deteksi kelas Senior dengan 30 prediksi benar dan kinerja yang lebih seimbang. Meski prediksi benar kelas Adult menurun dari 378 menjadi 334, penurunan ini merupakan trade-off yang wajar untuk meningkatkan kemampuan mendeteksi kelas Senior.
 
 **Feature Importance (jika applicable):**  
 ![Feature Importance Random Forest](images/Feature%20Importance%20Random%20Forest.png)  
